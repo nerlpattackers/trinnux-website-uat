@@ -32,7 +32,7 @@ export default function ManagedServices() {
     { key: "servers", Icon: Server, title: "Server Management", bullets: ["Hyper-V & VM ops", "Patching & hardening", "Backup & DR runbooks"] },
     { key: "db", Icon: Database, title: "Databases", bullets: ["SQL Server installs", "MySQL clustered setups", "Backup & restore strategies"] },
     { key: "monitor", Icon: Gauge, title: "Monitoring & Alerts", bullets: ["Zabbix templates", "SLA dashboards", "Alerting & runbooks"] },
-    { key: "security", Icon: Globe, title: "Proxy & Traffic Control", bullets: ["SQUID caching & proxy", "HAProxy load balancing", "Traffic shaping"] },
+    // { key: "security", Icon: Globe, title: "Proxy & Traffic Control", bullets: ["SQUID caching & proxy", "HAProxy load balancing", "Traffic shaping"] },
   ];
 
   return (
