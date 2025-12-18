@@ -6,8 +6,6 @@ export default defineConfig({
   preview: {
     host: true,
     port: 3000,
-    allowedHosts: [
-      "trinnux-website-uat-production.up.railway.app"
-    ]
+    allowedHosts: "all"
   }
 });
