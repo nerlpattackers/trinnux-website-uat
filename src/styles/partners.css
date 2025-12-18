@@ -1,0 +1,90 @@
+/* =========================================================
+   PARTNERS — FULL CLEAN VERSION (optimized for rAF loop)
+   ========================================================= */
+
+/* Outer container — full width */
+.partners-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 16px 0;
+  background: transparent;
+}
+
+/* Track: JS controls transform. No CSS animation allowed. */
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;               /* integer gap for stable width */
+  width: max-content;
+  flex-wrap: nowrap;       /* must never wrap */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Logo wrapper */
+.partner-logo {
+  flex: 0 0 auto;          /* fixed size, no stretch */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;        /* stable width for measurement */
+  max-width: 260px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Images */
+.partner-logo img {
+  display: block;
+  max-height: 56px;
+  width: auto;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;    /* avoids hover jitter */
+  margin: 0;
+  padding: 0;
+}
+
+/* Hover effect (optional, light) */
+.partner-logo img:hover {
+  transform: scale(1.03);
+  transition: transform 0.15s ease;
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .partners-track {
+    gap: 32px;
+  }
+
+  .partner-logo {
+    min-width: 120px;
+  }
+
+  .partner-logo img {
+    max-height: 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .partners-track {
+    gap: 28px;
+  }
+
+  .partner-logo {
+    min-width: 100px;
+  }
+
+  .partner-logo img {
+    max-height: 42px;
+  }
+}

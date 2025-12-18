@@ -1,0 +1,153 @@
+/* ==========================================================
+   FOOTER v7 — Premium Minimal Footer (ICON + TEXT LOGO)
+   ========================================================== */
+
+.footer-v7,
+.footer-v6 {
+  background: #fafafa;
+  padding-top: 70px;
+  padding-bottom: 60px;
+  border-top: 1px solid #eee;
+  background-image: none;
+  animation: fadeInFooter 0.6s ease;
+}
+
+/* Fade animation */
+@keyframes fadeInFooter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   FOOTER LOGO (ICON + TEXT)
+   =========================== */
+
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Icon only */
+.footer-logo-icon {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Text container */
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-align: left;
+}
+
+/* Brand name */
+.footer-logo-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #b21e2b;
+}
+
+/* Subtitle */
+.footer-logo-sub {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #1e40ff;
+  margin-top: 4px;
+}
+
+/* ===========================
+   NAVIGATION
+   =========================== */
+
+.footer-v6-nav a {
+  position: relative;
+  font-size: 1.05rem;
+  color: #444;
+  text-decoration: none;
+  padding-bottom: 6px;
+}
+
+/* Maroon underline animation */
+.footer-v6-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #7a0f1a, #b21e2b, #d62828);
+  border-radius: 3px;
+  transition: width .25s ease;
+}
+
+.footer-v6-nav a:hover {
+  color: #7a0f1a;
+}
+
+.footer-v6-nav a:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   SOCIAL ICONS
+   =========================== */
+
+.footer-v6-social a {
+  color: #555;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  transition: transform .25s ease, opacity .25s ease, color .25s ease;
+}
+
+.footer-v6-social a:hover {
+  transform: translateY(-4px);
+  color: #b21e2b;
+  opacity: 1;
+}
+
+/* ===========================
+   COPYRIGHT
+   =========================== */
+
+.footer-v6-copy {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-top: 12px;
+}
+
+/* ===========================
+   MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+  .footer-logo-wrap {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-logo-icon {
+    height: 56px;
+  }
+
+  .footer-logo-name {
+    font-size: 1.4rem;
+  }
+
+  .footer-logo-sub {
+    font-size: 0.75rem;
+  }
+
+  .footer-v6-nav {
+    gap: 2rem;
+  }
+
+  .footer-v6-social {
+    gap: 2rem;
+  }
+}

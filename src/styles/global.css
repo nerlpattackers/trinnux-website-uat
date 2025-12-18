@@ -1,0 +1,32 @@
+/* ==========================================================
+   GLOBAL SECTION SPACING — TRINNUX PREMIUM LAYOUT
+   ========================================================== */
+
+/* Default spacing for all homepage sections */
+section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Remove double spacing caused by Bootstrap py-5 */
+section.py-5 {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+/* First section (Hero) — slightly larger breathing room */
+section:first-of-type {
+  padding-top: 120px !important;
+  padding-bottom: 100px !important;
+}
+
+/* Reduce spacing between stacked card sections */
+.section-tight {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+
+/* Prevent large gap above footer */
+footer {
+  margin-top: 0 !important;
+}

@@ -1,0 +1,212 @@
+/* ============================================================
+   CAREERS — FULL SCREEN HERO
+   ============================================================ */
+
+/* HERO */
+.careers-hero {
+  position: relative;
+  min-height: 100vh; /* FULL SCREEN */
+  padding: 0 20px;
+  background: linear-gradient(
+    135deg,
+    #7a0e12 0%,
+    #b3151a 50%,
+    #7d0d12 100%
+  );
+  color: #ffffff;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* If you use a fixed navbar (~72px height), uncomment this */
+/*
+.careers-hero {
+  min-height: calc(100vh - 72px);
+}
+*/
+
+.careers-hero-inner {
+  max-width: 720px;
+  margin: auto;
+  padding: 80px 0; /* breathing room for small screens */
+}
+
+.careers-hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.careers-hero-sub {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 60ch;
+  margin: 14px auto 32px;
+}
+
+/* Desktop enhancement */
+@media (min-width: 992px) {
+  .careers-hero-title {
+    font-size: 2.9rem;
+  }
+
+  .careers-hero-sub {
+    font-size: 1.15rem;
+  }
+}
+
+/* ============================================================
+   BUTTON — SEND RESUME
+   ============================================================ */
+
+.careers-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-maroon-gradient {
+  background: linear-gradient(135deg, #b5151c, #7a0e12);
+  box-shadow: 0 8px 22px rgba(181, 21, 28, 0.32);
+}
+
+.btn-maroon-gradient:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(181, 21, 28, 0.45);
+}
+
+/* ============================================================
+   FLOATING ICONS
+   ============================================================ */
+
+.floating-icon {
+  position: absolute;
+  opacity: 0.13;
+  animation: float 7s ease-in-out infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-12px) translateX(8px);
+  }
+}
+
+/* Positions + varied animation timing */
+.fi-1 {
+  top: 22%;
+  left: 12%;
+  animation-duration: 5.5s;
+}
+
+.fi-2 {
+  top: 38%;
+  right: 10%;
+  animation-duration: 6.3s;
+}
+
+.fi-3 {
+  top: 18%;
+  right: 28%;
+  animation-duration: 7s;
+}
+
+.fi-4 {
+  top: 65%;
+  left: 20%;
+  animation-duration: 6.5s;
+}
+
+.fi-5 {
+  top: 25%;
+  right: 22%;
+  animation-duration: 7.5s;
+}
+
+.fi-6 {
+  top: 75%;
+  right: 12%;
+  animation-duration: 5.8s;
+}
+
+.fi-7 {
+  top: 40%;
+  left: 32%;
+  animation-duration: 9s;
+}
+
+/* ============================================================
+   WHY JOIN SECTION
+   ============================================================ */
+
+.careers-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.careers-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f1d2d2;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.careers-list {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.careers-list li {
+  margin-bottom: 10px;
+}
+/* ===============================
+   MAP CARD (RIGHT SIDE)
+=============================== */
+
+.about-map-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.6rem;
+  border: 1px solid #f1d2d2;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive Google Map */
+.map-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

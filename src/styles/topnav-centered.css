@@ -1,0 +1,132 @@
+/* -----------------------------------------------------
+   TOP NAV — Center Brand, Left Links, Right Links
+------------------------------------------------------ */
+
+.topnav {
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.topnav-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* ------------ LEFT + RIGHT FLEX ZONES ------------- */
+
+.nav-left,
+.nav-right {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* LEFT stays on left */
+.nav-left {
+  justify-content: flex-start;
+  gap: 28px;
+  padding-left: 20px;
+}
+
+/* RIGHT stays on the far right */
+.nav-right {
+  justify-content: flex-end;
+  gap: 28px;
+  padding-right: 32px;
+  margin-left: 20px; /* IMPORTANT: pushes items away from brand */
+}
+
+/* ------------ BRAND IN CENTER ------------- */
+
+.nav-brand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  color: #222;
+  white-space: nowrap;
+}
+
+.nav-brand img {
+  height: 32px;
+  width: auto;
+}
+
+/* ------------ NAV LINKS ------------- */
+
+.nav-item {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: #d62828;
+}
+
+.nav-item.active {
+  color: #d62828;
+}
+
+/* underline animation */
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #d62828;
+  border-radius: 2px;
+}
+
+/* ------------ CTA BUTTON ------------- */
+
+.btn-quote {
+  background: #0b66ff;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.btn-quote:hover {
+  background: #0053d6;
+}
+
+/* ------------ MOBILE BREAKPOINT ------------- */
+
+@media (max-width: 768px) {
+  .nav-brand {
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  .nav-left,
+  .nav-right {
+    flex: unset;
+  }
+
+  .topnav-inner {
+    justify-content: space-between;
+    padding: 10px 14px;
+  }
+}
+

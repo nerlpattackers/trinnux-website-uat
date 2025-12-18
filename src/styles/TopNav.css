@@ -1,0 +1,317 @@
+/* ============================================================
+   TOP NAVBAR — FIXED, EXTRA BIG LOGO (ICON + TEXT)
+   ============================================================ */
+
+/* ===========================
+   GLOBAL OFFSET (IMPORTANT)
+   =========================== */
+
+body {
+  padding-top: 96px;
+}
+
+/* ===========================
+   BASE
+   =========================== */
+
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.topnav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+}
+
+/* ===========================
+   LOGO (ICON + TEXT)
+   =========================== */
+
+.topnav-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+/* Icon only image */
+.topnav-logo-icon {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Text container */
+.topnav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+/* Brand name */
+.logo-name {
+  font-size: 1.8rem;          /* big, bold */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #b21e2b;
+}
+
+/* Subtitle */
+.logo-sub {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #1e40ff;
+  margin-top: 4px;
+}
+
+/* ===========================
+   HAMBURGER
+   =========================== */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 2px;
+  background: #7a0f1a;
+  transition: all 0.25s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ===========================
+   MENU
+   =========================== */
+
+.topnav-menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.topnav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  font-size: 1rem;
+}
+
+.topnav-link.active {
+  color: #b21e2b;
+  font-weight: 600;
+}
+
+/* ===========================
+   SERVICES DROPDOWN
+   =========================== */
+
+.topnav-dropdown {
+  position: relative;
+}
+
+.topnav-dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  position: relative;
+  font-size: 1rem;
+}
+
+.topnav-dropdown-btn.active {
+  color: #b21e2b;
+  font-weight: 600;
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.topnav-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+  color: #b21e2b;
+}
+
+/* Dropdown panel */
+.topnav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  min-width: 260px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.16);
+  padding: 14px;
+  display: none;
+  flex-direction: column;
+}
+
+.topnav-dropdown.open .topnav-dropdown-menu {
+  display: flex;
+}
+
+.topnav-dropdown-menu a {
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.topnav-dropdown-menu a:hover {
+  background: rgba(122,15,26,0.08);
+  color: #7a0f1a;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #eee;
+  margin: 10px 0;
+}
+
+.all-services {
+  font-weight: 600;
+  color: #7a0f1a;
+}
+
+/* ===========================
+   UNDERLINE (DESKTOP)
+   =========================== */
+
+.topnav-link::after,
+.topnav-dropdown-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #7a0f1a,
+    #b21e2b,
+    #d62828
+  );
+  opacity: 0;
+  transition:
+    width 0.28s cubic-bezier(.4,0,.2,1),
+    opacity 0.18s ease;
+}
+
+.topnav-link:hover::after,
+.topnav-dropdown-btn:hover::after {
+  width: 60%;
+  opacity: 1;
+}
+
+.topnav-link.active::after,
+.topnav-dropdown-btn.active::after {
+  width: 70%;
+  opacity: 1;
+}
+
+/* ===========================
+   MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px;
+  }
+
+  .topnav-inner {
+    height: 80px;
+  }
+
+  .topnav-logo-icon {
+    height: 56px;
+  }
+
+  .logo-name {
+    font-size: 1.4rem;
+  }
+
+  .logo-sub {
+    font-size: 0.75rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .topnav-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 18px;
+    display: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .topnav-menu.open {
+    display: flex;
+  }
+
+  .topnav-link,
+  .topnav-dropdown-btn {
+    width: 100%;
+    padding: 16px 0;
+    text-align: left;
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+
+  .topnav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    padding-left: 12px;
+    margin-top: 8px;
+  }
+
+  /* Disable underline animation on mobile */
+  .topnav-link::after,
+  .topnav-dropdown-btn::after {
+    display: none;
+  }
+}

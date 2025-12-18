@@ -1,0 +1,316 @@
+/* =========================================================
+   BASE RESET
+   ========================================================= */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   LIGHT / DARK THEME
+   ========================================================= */
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --card: #ffffff;
+
+  --text: #111111;
+  --muted: #6c757d;
+
+  --primary: #d62828;
+  --primary-contrast: #ffffff;
+
+  --shadow: 0 6px 20px rgba(0,0,0,0.06);
+
+  /* mask color used for partner fade edges */
+  --mask-color: rgba(255,255,255,1);
+}
+
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --card: #111111;
+
+  --text: #eeeeee;
+  --muted: #bbbbbb;
+
+  --primary: #ff4d4d;
+  --primary-contrast: #000000;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+  --mask-color: rgba(0,0,0,1);
+}
+
+.card, section, .navbar {
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
+}
+
+.navbar .nav-link {
+  color: var(--text) !important;
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+  color: var(--primary) !important;
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero-gradient {
+  background: linear-gradient(180deg, var(--primary) 0%, rgba(214,40,40,0.92) 65%);
+}
+
+.hero-gradient h1,
+.hero-gradient p,
+.hero-gradient .hero-sub {
+  color: rgba(255,255,255,0.96) !important;
+}
+
+.hero-inner {
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+}
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 6px;
+  color: var(--text);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 60%;
+  height: 4px;
+  background: var(--primary);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform .35s ease;
+}
+
+.section-title:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.section-sub {
+  color: var(--muted);
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+}
+
+.card-hover {
+  transition: transform .24s ease, box-shadow .24s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* =========================================================
+   PARTNERS — compatibility helpers (legacy class names)
+   ========================================================= */
+
+/* If you used .partners-scroll before, keep it working as an alias */
+.partners-scroll,
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  flex-wrap: nowrap;  /* do NOT wrap */
+}
+
+/* =========================================================
+   PARTNERS — Fixed seamless marquee (preferred)
+   ========================================================= */
+
+/*
+  Use .partners-marquee as the visible container,
+  and .partners-track (or .partners-scroll) as the measured/animated track.
+
+  JS (trackRef) should set:
+    --scroll-distance: <px> (half the track width — one set width)
+    --marquee-duration: <s>
+
+  The keyframe translates exactly -var(--scroll-distance) to loop seamlessly.
+*/
+
+.partners-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* mask color uses theme variable (set in :root) */
+  --mask-color: var(--mask-color);
+}
+
+/* subtle left/right fade masks (optional, looks premium) */
+.partners-marquee::before,
+.partners-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  pointer-events: none;
+  z-index: 2;
+  transition: background .2s ease;
+}
+
+.partners-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--mask-color) 0%, rgba(255,255,255,0) 100%);
+}
+.partners-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--mask-color) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Note: if your background isn't white, masks will blend based on --mask-color.
+   For dark theme the mask color is set to black via :root[data-theme="dark"]. */
+
+/* the measured, animated track (must be the element referenced by JS) */
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;   /* allows JS to measure the full pixel width reliably */
+  flex-wrap: nowrap;    /* prevent wrapping into multiple rows */
+  animation: marqueeAnim var(--marquee-duration, 18s) linear infinite;
+  will-change: transform;
+}
+
+/* pause animation on hover so users can inspect logos */
+.partners-marquee:hover .partners-track {
+  animation-play-state: paused;
+}
+
+/* each logo container */
+.partner-logo {
+  flex: 0 0 auto;             /* fixed-size flex item, don't grow/shrink full width */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  max-width: 260px;           /* prevents extremely wide logos from breaking layout */
+  box-sizing: border-box;
+}
+
+/* image sizing: constrain height to avoid vertical stacking */
+.partner-logo img {
+  display: block;
+  max-height: 56px;           /* adjust size here if logos need to be larger/smaller */
+  width: auto;
+  object-fit: contain;
+  opacity: 0.95;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+/* subtle hover effect */
+.partner-logo img:hover {
+  transform: translateY(-4px) scale(1.03);
+  opacity: 1;
+}
+
+/* fallback for older code expecting .partners-scroll animation */
+.partners-scroll {
+  animation: marqueeAnim var(--marquee-duration, 18s) linear infinite;
+}
+
+/* the actual seamless animation: JS sets --scroll-distance (px) and --marquee-duration (s) */
+@keyframes marqueeAnim {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--scroll-distance, 50%))); }
+}
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+.form-control {
+  border-radius: 6px;
+}
+
+/* =========================================================
+   PAGE TRANSITION (optional)
+   ========================================================= */
+
+.page-wrapper {
+  width: 100%;
+}
+
+.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter-active {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.page-exit { opacity: 1; transform: translateY(0); }
+.page-exit-active {
+  opacity: 0; transform: translateY(-8px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  .hero-gradient { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .partner-logo { min-width: 120px; }
+  .partner-logo img { max-height: 48px; }
+  .partners-marquee::before, .partners-marquee::after { width: 48px; }
+}
+
+@media (min-width: 1400px) {
+  .partners-track { gap: 60px; }
+  .partner-logo img { max-height: 72px; }
+}

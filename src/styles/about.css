@@ -1,0 +1,111 @@
+/* ===============================
+   ABOUT SECTION
+=============================== */
+
+.about-section {
+  background: #ffffff;
+}
+
+/* ===============================
+   TITLE + UNDERLINE
+=============================== */
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.about-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, #7b1e23, #a8323a);
+  border-radius: 3px;
+}
+
+.about-sub {
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+
+/* ===============================
+   METRICS
+=============================== */
+
+.about-metric {
+  padding: 1.2rem;
+}
+
+.metric-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #7b1e23;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ===============================
+   MAP CARD
+=============================== */
+
+.about-map-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.6rem;
+  border: 1px solid #f1d2d2;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Address row */
+.office-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.office-address svg {
+  color: #7b1e23;
+  flex-shrink: 0;
+}
+
+/* Responsive map */
+.map-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ===============================
+   MOBILE
+=============================== */
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 1.6rem;
+  }
+
+  .about-sub {
+    font-size: 1rem;
+  }
+}

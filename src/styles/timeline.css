@@ -1,0 +1,124 @@
+/* ===============================
+   TIMELINE SECTION
+   =============================== */
+
+.timeline-section {
+  background: #ffffff;
+}
+
+/* Title */
+.timeline-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.timeline-title::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 4px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, #7b1e23, #a8323a);
+  border-radius: 3px;
+}
+
+.timeline-sub {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* ===============================
+   TIMELINE CORE
+   =============================== */
+
+.timeline {
+  position: relative;
+  margin-top: 3rem;
+  padding-left: 24px;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #7b1e23, #a8323a);
+  border-radius: 3px;
+}
+
+/* Item */
+.timeline-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* Dot */
+.timeline-dot {
+  position: relative;
+  min-width: 24px;
+}
+
+.timeline-dot::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: #7b1e23;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(123, 30, 35, 0.15);
+}
+
+/* Year pill */
+.timeline-year {
+  position: absolute;
+  left: 24px;
+  top: -2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7b1e23;
+  background: rgba(123, 30, 35, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Content */
+.timeline-content {
+  background: #fff;
+  border: 1px solid #f1d2d2;
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content h5 {
+  font-weight: 600;
+}
+
+/* ===============================
+   MOBILE
+   =============================== */
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 18px;
+  }
+
+  .timeline::before {
+    left: 9px;
+  }
+
+  .timeline-year {
+    left: 20px;
+  }
+}

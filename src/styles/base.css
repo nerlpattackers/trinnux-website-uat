@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991.98px) {
+  .hero-gradient { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+}

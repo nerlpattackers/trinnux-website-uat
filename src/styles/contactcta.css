@@ -1,0 +1,203 @@
+/* ================================
+   CONTACT CTA v3 — Premium Section
+   ================================ */
+
+.cta-v3-section {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+
+  /* Premium maroon gradient background */
+  background: linear-gradient(135deg, #5a0d14, #8e1720, #b81d26);
+}
+
+/* Soft overlay for readability */
+.cta-v3-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(2px);
+}
+
+/* ================================
+   TEXT
+   ================================ */
+
+.cta-v3-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.cta-v3-sub {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Optional badge */
+.cta-v3-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  padding: 6px 14px;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(6px);
+}
+
+/* ================================
+   GLASS CARD
+   ================================ */
+
+.cta-v3-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.cta-v3-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ================================
+   SUCCESS MESSAGE
+   ================================ */
+
+.cta-v3-success {
+  background: #d4edda;
+  color: #276738;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* ================================
+   INPUTS
+   ================================ */
+
+.cta-v3-input-wrap {
+  position: relative;
+}
+
+.cta-v3-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+.cta-v3-input {
+  padding-left: 42px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.cta-v3-input:focus {
+  border-color: #b81d26 !important;
+  box-shadow: 0 0 0 3px rgba(184, 29, 38, 0.35) !important;
+}
+
+/* ================================
+   BUTTON — SMALLER MAROON GRADIENT
+   ================================ */
+
+.cta-v3-btn {
+  padding: 10px 22px;                /* reduced height + width */
+  font-size: 1rem;                   /* smaller than before */
+  font-weight: 600;
+  border-radius: 14px;               /* less pill-like */
+  border: none;
+  width: auto;                       /* not full width */
+  min-width: 180px;                  /* consistent size */
+  display: inline-block;
+
+  background: linear-gradient(135deg, #6a0f1a 0%, #a31221 100%);
+  color: #fff !important;
+
+  box-shadow: 0 4px 14px rgba(163, 18, 33, 0.25);
+  transition: all 0.25s ease;
+}
+
+.cta-v3-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #7d1320 0%, #b61726 100%);
+  box-shadow: 0 6px 20px rgba(163, 18, 33, 0.35);
+}
+
+.cta-v3-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(163, 18, 33, 0.25);
+}
+
+.cta-v3-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ================================
+   CONTACT CHANNELS
+   ================================ */
+
+.cta-v3-channels {
+  margin-top: 20px;
+  text-align: center;
+  color: #444;
+  font-size: 0.97rem;
+}
+
+.cta-v3-channels div {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* ================================
+   ERROR MESSAGE
+   ================================ */
+
+.cta-v3-error {
+  background: #ffeaea;
+  color: #b00020;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cta-v3-countdown {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 575px) {
+  .cta-v3-title {
+    font-size: 1.85rem;
+  }
+
+  .cta-v3-card {
+    padding: 20px;
+  }
+
+  .cta-v3-btn {
+    width: 100%;       /* full width only on small screens */
+    min-width: 0;
+    border-radius: 16px;
+  }
+}

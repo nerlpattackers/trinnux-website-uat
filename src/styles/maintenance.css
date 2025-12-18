@@ -1,0 +1,37 @@
+/* src/styles/maintenance.css */
+
+.maintenance {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  text-align: center;
+}
+
+.maintenance-card {
+  max-width: 520px;
+  padding: 48px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.maintenance-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.maintenance-card p {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.maintenance-brand {
+  display: block;
+  margin-top: 24px;
+  opacity: 0.85;
+  font-weight: 600;
+}

@@ -1,0 +1,179 @@
+/* ============================================================
+   MANAGED SERVICES – MAROON PREMIUM THEME
+   ============================================================ */
+
+/* Section Title */
+.cap-grid-section .sp-section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  position: relative;
+  display: inline-block;
+}
+
+.cap-grid-section .sp-section-title::after {
+  content: none;
+}
+
+
+
+/* ============================================================
+   CAPABILITY CARDS
+   ============================================================ */
+
+.cap-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(178, 30, 43, 0.25); /* maroon border */
+  transition: transform .26s ease, box-shadow .26s ease, border-color .26s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cap-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(122, 15, 26, 0.55);
+  box-shadow: 0 16px 34px rgba(122, 15, 26, 0.15); /* maroon shadow */
+}
+
+/* Icon Bubble — MAROON VERSION */
+.cap-icon.red {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #7a0f1a 0%, #b21e2b 50%, #d62828 100%);
+  color: white;
+
+  box-shadow: 0 8px 20px rgba(178, 30, 43, 0.35);
+
+  transition: transform .26s ease, box-shadow .26s ease;
+}
+
+.cap-card:hover .cap-icon.red {
+  transform: scale(1.12);
+  box-shadow: 0 12px 28px rgba(178, 30, 43, 0.45);
+}
+
+/* List bullets */
+.cap-bullets {
+  margin: 0;
+  padding-left: 1.05rem;
+  margin-top: 0.25rem;
+}
+
+/* Typography */
+.cap-card h5 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cap-card .small.text-muted {
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 767px) {
+  .cap-icon.red {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+  }
+
+  .cap-card {
+    border-radius: 10px;
+  }
+}
+
+/* ============================================================
+   SERVICE PAGE HEADER — MAROON THEME
+   ============================================================ */
+
+.sp-heading {
+  align-items: center;
+}
+
+.sp-icon-bubble.red {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #7a0f1a 0%, #b21e2b 50%, #d62828 100%);
+  box-shadow: 0 10px 22px rgba(178, 30, 43, 0.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sp-heading:hover .sp-icon-bubble.red {
+  transform: scale(1.08);
+  box-shadow: 0 14px 28px rgba(178, 30, 43, 0.45);
+}
+
+/* Typography */
+.sp-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sp-intro {
+  max-width: 60ch;
+}
+
+/* Section headings in ServicePage */
+.sp-section-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+.sp-section-body {
+  margin-bottom: .75rem;
+}
+
+.sp-list {
+  padding-left: 1.3rem;
+}
+
+/* ============================================================
+   SIDEBAR CARD
+   ============================================================ */
+
+.sp-sidebar {
+  background: #fff;
+  border: 1px solid rgba(178, 30, 43, 0.25);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(122, 15, 26, 0.10);
+}
+
+.sp-sidebar h4 {
+  font-weight: 600;
+}
+
+.sp-sidebar ul {
+  padding-left: 1.2rem;
+}
+
+.sp-sidebar .btn {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.sp-section-title {
+  border-left: 4px solid #7a0f1a;
+  padding-left: 12px;
+}

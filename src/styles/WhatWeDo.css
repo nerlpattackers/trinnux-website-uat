@@ -1,0 +1,74 @@
+/* WHAT WE DO — MAROON PREMIUM */
+
+/* Titles */
+.wwd-title {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.wwd-sub {
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+
+/* Title underline animation */
+.wwd-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background: #b21e2b; /* maroon underline */
+  transition: width 0.35s ease;
+  border-radius: 2px;
+}
+
+.wwd-title:hover::after {
+  width: 40%;
+}
+
+/* Cards */
+.wwd-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e4bcbc; /* soft maroon border */
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.wwd-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(178, 30, 43, 0.25); /* maroon shadow */
+  border-color: rgba(178, 30, 43, 0.55);
+}
+
+/* ICON — Maroon Gradient + Glow */
+.wwd-icon.maroon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #7a0f1a 0%, #b21e2b 50%, #d62828 100%);
+  color: white;
+
+  box-shadow: 0 6px 16px rgba(178, 30, 43, 0.45);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+/* Hover icon animation */
+.wwd-card:hover .wwd-icon.maroon {
+  transform: scale(1.12);
+  box-shadow: 0 12px 28px rgba(178, 30, 43, 0.65);
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .wwd-title { font-size: 1.4rem; }
+  .wwd-icon.maroon { width: 48px; height: 48px; }
+}

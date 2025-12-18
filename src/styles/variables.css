@@ -1,0 +1,35 @@
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --card: #ffffff;
+
+  --text: #111111;
+  --muted: #6c757d;
+
+  --primary: #d62828;
+  --primary-contrast: #ffffff;
+
+  --shadow: 0 6px 20px rgba(0,0,0,0.06);
+
+  --mask-color: rgba(255,255,255,1);
+}
+
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --card: #111111;
+
+  --text: #eeeeee;
+  --muted: #bbbbbb;
+
+  --primary: #ff4d4d;
+  --primary-contrast: #000000;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+  --mask-color: rgba(0,0,0,1);
+}
+
+.card, section, .navbar {
+  transition: background-color .25s ease, color .25s ease;
+}

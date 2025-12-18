@@ -1,0 +1,103 @@
+/* ============================================================
+   FEATURED CAROUSEL (HOMEPAGE)
+   ============================================================ */
+
+.featured-carousel {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.12);
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay */
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.65)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  color: #fff;
+}
+
+.carousel-category {
+  display: inline-block;
+  background: rgba(178, 30, 43, 0.9);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.carousel-overlay h2 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.carousel-overlay p {
+  max-width: 520px;
+  margin-top: 10px;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+/* Controls */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  font-size: 2.5rem;
+  padding: 6px 14px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featured-carousel {
+    height: 360px;
+  }
+
+  .carousel-overlay {
+    padding: 24px;
+  }
+
+  .carousel-overlay h2 {
+    font-size: 1.6rem;
+  }
+}

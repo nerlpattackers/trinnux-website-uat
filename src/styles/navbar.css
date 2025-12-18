@@ -1,0 +1,51 @@
+.navbar {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
+}
+
+.navbar .nav-link {
+  color: var(--text) !important;
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+  color: var(--primary) !important;
+}
+
+/* ============================================
+   FIX DROPDOWN TO MATCH NAV-LINK UNDERLINE
+   ============================================ */
+
+/* Make dropdown toggle use same underline baseline + spacing */
+.nav-item.dropdown .dropdown-toggle {
+  position: relative;
+  padding-bottom: 4px; /* match your underline padding */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* spacing between text and caret */
+}
+
+/* Give the dropdown toggle the same underline animation */
+.nav-item.dropdown .dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff0000, #cc0000);
+  transition: width 220ms cubic-bezier(.4, 0, .2, 1);
+  border-radius: 2px;
+}
+
+/* Hover/Active states for dropdown link underline */
+.nav-item.dropdown .dropdown-toggle:hover::after,
+.nav-item.dropdown .dropdown-toggle.active::after {
+  width: 100%;
+}
+
+/* Keep caret (▼) aligned properly */
+.nav-item.dropdown .dropdown-toggle::before {
+  margin-right: 2px;
+}
