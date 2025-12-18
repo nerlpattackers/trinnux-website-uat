@@ -6,6 +6,6 @@ export default defineConfig({
   preview: {
     host: true,
     port: 3000,
-    allowedHosts: "all"
+    allowedHosts: true   // ✅ THIS IS THE KEY
   }
 });
