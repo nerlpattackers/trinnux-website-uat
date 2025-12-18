@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import React, { useRef, useCallback } from "react";
-import "../styles/Hero.css";
+import "../styles/hero.css";
 
 export default function Hero() {
   const bgRef = useRef(null);
