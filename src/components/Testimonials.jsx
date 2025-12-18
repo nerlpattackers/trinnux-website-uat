@@ -13,8 +13,8 @@ const testimonials = [
     logo: "/partners/rbgi.png"
   },
   {
-    name: "Jonny Boldman",
-    role: "Destroyer, MILF",
+    name: "Jonny Goodman",
+    role: "Destroyer, Example",
     letter: "B",
     img: "/partners/sins.png",
     text: "Their automation and incident systems drastically reduced our operational noise. Reporting is clear and extremely helpful.",
@@ -22,13 +22,13 @@ const testimonials = [
     logo: null
   },
   {
-    name: "Jeff",
-    role: "Milf, Buster",
+    name: "Anonymous",
+    role: "Admin",
     letter: "J",
-    img: "/partners/jef.png",
-    text: "EA from pobla diniligan ng modta.",
+    img: null,
+    text: "Hatdoooog, frieeees at borgir.",
     rating: 4,
-    logo: "/partners/sulasok.png"
+    logo: null
   }
 ];
 
