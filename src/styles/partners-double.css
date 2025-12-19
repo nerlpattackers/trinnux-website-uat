@@ -1,50 +1,37 @@
-/* partners-double.css
-   Double-track seamless marquee styles
-*/
+/* =================================================
+   PARTNERS – TRUE INFINITE MARQUEE (JS-DRIVEN)
+   No CSS animation, NO reset, NO jump
+   ================================================= */
 
-/* outer container area */
+/* Outer viewport */
 .partners-marquee {
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 12px 0; /* vertical spacing */
-  background: transparent;
 }
 
-/* wrapper that contains two inner tracks and is translated by JS */
-.partners-wrapper {
+/* Moving track (translated by JS) */
+.partners-track {
   display: flex;
   align-items: center;
-  gap: 0;                /* inner tracks sit edge-to-edge */
-  width: max-content;    /* will be measured & translated */
-  transform: translate3d(0,0,0);
-  will-change: transform;
+  gap: 48px;                 /* spacing between logos */
+  width: max-content;        /* allow infinite horizontal size */
+  will-change: transform;   /* GPU hint */
+  transform: translate3d(var(--x, 0), 0, 0);
 }
 
-/* each inner track is a horizontal flex row of logos */
-.partners-inner {
-  display: flex;
-  align-items: center;
-  gap: 48px;             /* space between logos */
-  flex-wrap: nowrap;
-  box-sizing: border-box;
-}
-
-/* logo item */
+/* Logo container */
 .partner-logo {
   flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-width: 140px;
   max-width: 260px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
 }
 
-/* image */
+/* Logo image */
 .partner-logo img {
   display: block;
   max-height: 56px;
@@ -52,30 +39,36 @@
   object-fit: contain;
   pointer-events: none;
   user-select: none;
-  margin: 0;
-  padding: 0;
 }
 
-/* hover slight scale (optional) */
-.partner-logo img:hover {
-  transform: scale(1.03);
-  transition: transform 0.15s ease;
-}
+/* =========================
+   RESPONSIVE TUNING
+   ========================= */
 
-/* responsive */
 @media (max-width: 992px) {
-  .partners-inner { gap: 32px; }
-  .partner-logo { min-width: 120px; }
-  .partner-logo img { max-height: 48px; }
+  .partners-track {
+    gap: 32px;
+  }
+
+  .partner-logo {
+    min-width: 120px;
+  }
+
+  .partner-logo img {
+    max-height: 48px;
+  }
 }
 
 @media (max-width: 576px) {
-  .partners-inner { gap: 24px; }
-  .partner-logo { min-width: 100px; }
-  .partner-logo img { max-height: 42px; }
-}
+  .partners-track {
+    gap: 24px;
+  }
 
-/* Pause on hover (just sets a class, JS handles stopping movement) */
-.partners-wrapper:hover {
-  cursor: pointer;
+  .partner-logo {
+    min-width: 100px;
+  }
+
+  .partner-logo img {
+    max-height: 42px;
+  }
 }
