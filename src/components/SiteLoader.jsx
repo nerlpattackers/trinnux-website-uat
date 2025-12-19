@@ -8,7 +8,7 @@ export default function SiteLoader() {
   /* ============================
      CONFIG
      ============================ */
-  const LOADER_SECONDS = 2;          // 👈 change this (1, 2, 3, etc.)
+  const LOADER_SECONDS = 6;          // 👈 change this (1, 2, 3, etc.)
   const LOADER_DURATION = LOADER_SECONDS * 1000;
 
   useEffect(() => {
