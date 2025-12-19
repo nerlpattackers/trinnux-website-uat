@@ -6,10 +6,9 @@ export default function SiteLoader() {
   const [visible, setVisible] = useState(true);
 
   /* ============================
-     CONFIG
+     PRODUCTION CONFIG
      ============================ */
-  const LOADER_SECONDS = 6;          // 👈 change this (1, 2, 3, etc.)
-  const LOADER_DURATION = LOADER_SECONDS * 1000;
+  const LOADER_DURATION_MS = 300; // ✅ production-safe
 
   useEffect(() => {
     // Show loader only once per tab
@@ -24,10 +23,10 @@ export default function SiteLoader() {
 
     const timer = setTimeout(() => {
       setVisible(false);
-    }, LOADER_DURATION);
+    }, LOADER_DURATION_MS);
 
     return () => clearTimeout(timer);
-  }, [LOADER_DURATION]);
+  }, []);
 
   if (!visible) return null;
 
@@ -35,12 +34,7 @@ export default function SiteLoader() {
     <div className="site-loader" role="status" aria-label="Loading site">
       <div className="loader-inner">
         <span className="loader-logo">TRINNUX</span>
-
         <div className="loader-bar" />
-
-        <div className="loader-seconds">
-          Loading… {LOADER_SECONDS}s
-        </div>
       </div>
     </div>
   );
