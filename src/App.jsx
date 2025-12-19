@@ -4,6 +4,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import AOS from "aos";
 
+// Loader
+import SiteLoader from "./components/SiteLoader";
+
 // layout
 import TopNavbar from "./components/TopNavBar";
 import Footer from "./components/Footer";
@@ -67,6 +70,8 @@ export default function App() {
 
   return (
     <div className="d-flex flex-column min-vh-100 bg-white">
+      {/* GLOBAL SITE LOADER */}
+      <SiteLoader />
       <TopNavbar />
 
       <main className="flex-grow-1 position-relative">

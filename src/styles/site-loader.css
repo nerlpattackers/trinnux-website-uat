@@ -1,0 +1,59 @@
+/* ===========================
+   GLOBAL SITE LOADER
+   =========================== */
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  background: #0b0b0b;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: loaderFadeOut 0.4s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.loader-inner {
+  text-align: center;
+}
+
+.loader-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.loader-bar {
+  width: 120px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(
+    90deg,
+    #444,
+    #d62828,
+    #444
+  );
+  background-size: 200% 100%;
+  animation: loaderMove 1s linear infinite;
+}
+
+@keyframes loaderMove {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes loaderFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.loader-seconds {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+}
+
