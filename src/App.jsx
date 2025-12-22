@@ -41,6 +41,8 @@ import Monitoring from "./pages/services/Monitoring";
 import Streaming from "./pages/services/Streaming";
 
 import "./styles/transitions.css";
+import "./App.css";
+
 
 export default function App() {
   const location = useLocation();
@@ -82,7 +84,7 @@ export default function App() {
   const nodeRef = getNodeRef(location.pathname);
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-white">
+    <div className="d-flex flex-column min-vh-100 app-shell">
       {/* Global loader */}
       <SiteLoader />
 
