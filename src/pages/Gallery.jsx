@@ -1,4 +1,3 @@
-// src/pages/Gallery.jsx
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/gallery.css";
 
@@ -46,41 +45,35 @@ const images = [
 ];
 
 /* ===========================
-   ANALYTICS (LOCAL)
+   LAZY IMAGE (WITH PRELOAD)
    =========================== */
-function trackView(image) {
-  const key = "gallery-analytics";
-  const data = JSON.parse(localStorage.getItem(key) || "{}");
-  data[image.alt] = (data[image.alt] || 0) + 1;
-  localStorage.setItem(key, JSON.stringify(data));
-}
-
-/* ===========================
-   LAZY IMAGE
-   =========================== */
-function LazyImage({ webp, jpg, alt, featured, onClick }) {
+function LazyImage({ webp, jpg, alt, featured, priority, onClick }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(priority);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
+    if (priority) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
           setVisible(true);
-          obs.disconnect();
+          observer.unobserve(entry.target);
         }
       },
       { rootMargin: "200px" }
     );
 
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [priority]);
 
   return (
     <button className="gallery-item" onClick={onClick}>
-      {/* ⭐ Featured badge */}
       {featured && <span className="gallery-featured">Featured</span>}
 
       <picture ref={ref}>
@@ -88,7 +81,9 @@ function LazyImage({ webp, jpg, alt, featured, onClick }) {
         <img
           src={visible ? jpg : ""}
           alt={alt}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          fetchpriority={priority ? "high" : "auto"}
           className={loaded ? "loaded" : ""}
           onLoad={() => setLoaded(true)}
         />
@@ -108,7 +103,6 @@ export default function Gallery() {
 
   const categories = ["All", "Training", "Installation", "Team & Culture"];
 
-  /* Featured images first */
   const filteredImages = useMemo(() => {
     const list =
       category === "All"
@@ -124,18 +118,16 @@ export default function Gallery() {
 
   const visibleImages = filteredImages.slice(0, visibleCount);
 
+  const preloadLightbox = (img) => {
+    const i = new Image();
+    i.src = img.jpg;
+  };
+
   const close = () => setActiveIndex(null);
   const prev = () =>
     setActiveIndex((i) => (i > 0 ? i - 1 : visibleImages.length - 1));
   const next = () =>
     setActiveIndex((i) => (i < visibleImages.length - 1 ? i + 1 : 0));
-
-  /* Track analytics */
-  useEffect(() => {
-    if (activeIndex !== null) {
-      trackView(visibleImages[activeIndex]);
-    }
-  }, [activeIndex]);
 
   /* Keyboard navigation */
   useEffect(() => {
@@ -164,15 +156,15 @@ export default function Gallery() {
   return (
     <main className="gallery-page">
       <div className="container">
-        {/* Header */}
+
         <header className="gallery-header">
           <h1>Our Work in Action</h1>
           <p>
-            A look at how 3NNUX brings together people, training, technology, and teamwork—inside and beyond the workplace.
+            A look at how 3NNUX brings together people, training, technology,
+            and teamwork—inside and beyond the workplace.
           </p>
         </header>
 
-        {/* Filters */}
         <div className="gallery-filters">
           {categories.map((c) => (
             <button
@@ -189,7 +181,6 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Grid */}
         <section className="gallery-grid">
           {visibleImages.map((img, i) => (
             <LazyImage
@@ -198,12 +189,15 @@ export default function Gallery() {
               jpg={img.jpg}
               alt={img.alt}
               featured={img.featured}
-              onClick={() => setActiveIndex(i)}
+              priority={img.featured || i < 3}
+              onClick={() => {
+                preloadLightbox(img);
+                setActiveIndex(i);
+              }}
             />
           ))}
         </section>
 
-        {/* Load more */}
         {visibleCount < filteredImages.length && (
           <div className="gallery-load-more">
             <button onClick={() => setVisibleCount((v) => v + 9)}>
@@ -213,7 +207,6 @@ export default function Gallery() {
         )}
       </div>
 
-      {/* Lightbox */}
       {activeIndex !== null && (
         <div
           className="gallery-lightbox"

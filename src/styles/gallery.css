@@ -23,7 +23,10 @@
   color: #555;
 }
 
-/* Masonry grid */
+/* ===========================
+   MASONRY GRID
+   =========================== */
+
 .gallery-grid {
   columns: 3;
   column-gap: 24px;
@@ -38,15 +41,18 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  position: relative;
+  aspect-ratio: 4 / 3;
 }
 
 .gallery-item img {
   width: 100%;
-  display: block;
-  filter: blur(12px);
-  transform: scale(1.04);
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  transform: scale(1.03);
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
 }
 
 .gallery-item img.loaded {
@@ -56,84 +62,24 @@
 }
 
 /* ===========================
-   LIGHTBOX
+   FEATURED BADGE
    =========================== */
 
-.gallery-lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.lightbox-image-wrap {
-  max-width: 90%;
-  max-height: 75vh;
-  text-align: center;
-}
-
-.lightbox-image-wrap img {
-  max-width: 100%;
-  max-height: 70vh;
-  transition: transform 0.25s ease;
-  cursor: zoom-in;
-}
-
-.lightbox-caption {
-  margin-top: 10px;
-  color: #eee;
-  font-size: 0.95rem;
-}
-
-/* Controls */
-.lightbox-btn {
+.gallery-featured {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  border: none;
-  font-size: 3rem;
-  padding: 0 14px;
-  cursor: pointer;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  background: linear-gradient(90deg, #7a0f1a, #b21e2b, #d62828);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  pointer-events: none;
 }
 
-.lightbox-btn.prev { left: 20px; }
-.lightbox-btn.next { right: 20px; }
-
-/* Thumbnails */
-.lightbox-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-  overflow-x: auto;
-  padding: 6px 12px;
-}
-
-.lightbox-thumbs img {
-  height: 54px;
-  opacity: 0.6;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.lightbox-thumbs img.active {
-  opacity: 1;
-  outline: 2px solid #b21e2b;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .gallery-grid { columns: 2; }
-}
-
-@media (max-width: 576px) {
-  .gallery-grid { columns: 1; }
-}
 /* ===========================
    FILTER BUTTONS
    =========================== */
@@ -166,6 +112,7 @@
   color: #fff;
   border-color: #b21e2b;
 }
+
 /* ===========================
    LOAD MORE
    =========================== */
@@ -191,41 +138,63 @@
   background: #7a0f1a;
   transform: translateY(-2px);
 }
+
 /* ===========================
-   FEATURED BADGE
+   LIGHTBOX
    =========================== */
 
-.gallery-item {
-  position: relative;
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.gallery-featured {
+.lightbox-image-wrap {
+  max-width: 90%;
+  max-height: 75vh;
+  text-align: center;
+}
+
+.lightbox-image-wrap img {
+  max-width: 100%;
+  max-height: 70vh;
+}
+
+.lightbox-caption {
+  margin-top: 10px;
+  color: #eee;
+  font-size: 0.95rem;
+}
+
+/* Controls */
+.lightbox-btn {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 5;
-
-  background: linear-gradient(
-    90deg,
-    #7a0f1a,
-    #b21e2b,
-    #d62828
-  );
-
-  color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  padding: 6px 10px;
-  border-radius: 999px;
-
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  font-size: 3rem;
+  padding: 0 14px;
+  cursor: pointer;
 }
 
-/* Optional: hide badge on very small screens */
+.lightbox-btn.prev { left: 20px; }
+.lightbox-btn.next { right: 20px; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 992px) {
+  .gallery-grid { columns: 2; }
+}
+
 @media (max-width: 576px) {
-  .gallery-featured {
-    display: none;
-  }
+  .gallery-grid { columns: 1; }
+  .gallery-featured { display: none; }
 }
