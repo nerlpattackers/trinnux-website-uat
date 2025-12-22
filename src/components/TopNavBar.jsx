@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/TopNav.css";
 
 export default function TopNavBar() {
@@ -8,6 +8,8 @@ export default function TopNavBar() {
   const [aboutOpen, setAboutOpen] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
+
   const servicesRef = useRef(null);
   const aboutRef = useRef(null);
 
@@ -25,17 +27,10 @@ export default function TopNavBar() {
   /* Close dropdowns when clicking outside */
   useEffect(() => {
     const handler = (e) => {
-      if (
-        servicesRef.current &&
-        !servicesRef.current.contains(e.target)
-      ) {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
         setServicesOpen(false);
       }
-
-      if (
-        aboutRef.current &&
-        !aboutRef.current.contains(e.target)
-      ) {
+      if (aboutRef.current && !aboutRef.current.contains(e.target)) {
         setAboutOpen(false);
       }
     };
@@ -44,23 +39,44 @@ export default function TopNavBar() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  /* Logo / Home scroll-to-top handler */
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+
+    if (location.pathname === "/") {
+      // Already on Home → scroll up
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate home, then scroll
+      navigate("/");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 50);
+    }
+  };
+
   return (
     <header className="topnav">
       <div className="container topnav-inner">
 
-        {/* Logo */}
-        <NavLink to="/" className="topnav-logo-wrap">
+        {/* =========================
+            LOGO (Back to Top)
+        ========================= */}
+        <a
+          href="/"
+          className="topnav-logo-wrap"
+          onClick={handleHomeClick}
+        >
           <img
             src="/trinnux.png"
-            alt="3NNUX"
+            alt="3NNUX Technologies"
             className="topnav-logo-icon"
           />
-
           <div className="topnav-logo-text">
             <span className="logo-name">3NNUX</span>
             <span className="logo-sub">Technologies Corp.</span>
           </div>
-        </NavLink>
+        </a>
 
         {/* Hamburger */}
         <button
@@ -73,10 +89,19 @@ export default function TopNavBar() {
           <span />
         </button>
 
-        {/* Menu */}
+        {/* =========================
+            NAV MENU
+        ========================= */}
         <nav className={`topnav-menu ${menuOpen ? "open" : ""}`}>
 
-          <NavLink to="/" className="topnav-link">
+          {/* Home (also scrolls to top) */}
+          <NavLink
+            to="/"
+            className="topnav-link"
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+          >
             Home
           </NavLink>
 
@@ -125,7 +150,7 @@ export default function TopNavBar() {
           </NavLink>
 
           {/* =========================
-              ABOUT DROPDOWN (NEW)
+              ABOUT DROPDOWN
           ========================= */}
           <div
             className={`topnav-dropdown ${
