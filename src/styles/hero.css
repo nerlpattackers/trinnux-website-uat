@@ -116,3 +116,8 @@
     min-width: 86px;
   }
 }
+.hero h1 {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}

@@ -45,13 +45,16 @@ export default function Hero() {
       {/* ================================
           HERO BACKGROUND IMAGE (FAST LCP)
          ================================ */}
-      <img
+     <img
         src="/hero-bg.webp"
         alt=""
-        aria-hidden="true"
+        role="presentation"
         className="hero-bg-img"
         loading="eager"
-        fetchpriority="high"
+        fetchPriority="high"
+        decoding="async"
+        width="1920"
+        height="1080"
       />
 
       {/* ================================
