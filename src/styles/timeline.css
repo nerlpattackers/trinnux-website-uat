@@ -1,124 +1,261 @@
-/* ===============================
-   TIMELINE SECTION
-   =============================== */
+/* ============================================================
+   PAGE
+============================================================ */
 
-.timeline-section {
+.timeline-page {
+  padding: 80px 0 120px;
   background: #ffffff;
 }
 
-/* Title */
-.timeline-title {
-  font-size: 2rem;
+/* ============================================================
+   HEADER
+============================================================ */
+
+.timeline-header {
+  max-width: 760px;
+  margin: 0 auto 90px;
+  text-align: center;
+}
+
+.timeline-header h1 {
+  font-size: 2.6rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  position: relative;
-  display: inline-block;
 }
 
-.timeline-title::after {
-  content: "";
-  display: block;
-  width: 52px;
-  height: 4px;
-  margin: 8px auto 0;
-  background: linear-gradient(90deg, #7b1e23, #a8323a);
-  border-radius: 3px;
+.timeline-header p {
+  margin-top: 14px;
+  color: #555;
 }
 
-.timeline-sub {
-  max-width: 60ch;
-  margin: 0 auto;
-}
-
-/* ===============================
+/* ============================================================
    TIMELINE CORE
-   =============================== */
+============================================================ */
 
 .timeline {
   position: relative;
-  margin-top: 3rem;
-  padding-left: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Vertical line */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 12px;
   top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, #7b1e23, #a8323a);
-  border-radius: 3px;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #eee;
+  transform: translateX(-50%);
 }
 
-/* Item */
+.timeline-line-fill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+/* Animated gradient */
+.gradient-flow {
+  background: linear-gradient(
+    180deg,
+    #7a0f1a,
+    #b21e2b,
+    #d63a47
+  );
+  background-size: 100% 300%;
+}
+
+/* ============================================================
+   ITEMS
+============================================================ */
+
 .timeline-item {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 3rem;
   position: relative;
+  width: 50%;
+  padding: 0 40px;
+  margin-bottom: 80px;
 }
 
-/* Dot */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* ============================================================
+   DOT
+============================================================ */
+
 .timeline-dot {
-  position: relative;
-  min-width: 24px;
-}
-
-.timeline-dot::before {
-  content: "";
   position: absolute;
-  left: -2px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  background: #7b1e23;
+  top: 24px;
+  left: 100%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: currentColor;
   border-radius: 50%;
-  box-shadow: 0 0 0 6px rgba(123, 30, 35, 0.15);
+  display: grid;
+  place-items: center;
 }
 
-/* Year pill */
-.timeline-year {
-  position: absolute;
-  left: 24px;
-  top: -2px;
+.timeline-item.right .timeline-dot {
+  left: 0;
+}
+
+.timeline-icon {
+  color: #fff;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #7b1e23;
-  background: rgba(123, 30, 35, 0.1);
-  padding: 4px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
 }
 
-/* Content */
-.timeline-content {
-  background: #fff;
-  border: 1px solid #f1d2d2;
+/* ============================================================
+   CARD
+============================================================ */
+
+.timeline-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-left: 4px solid currentColor;
+}
+
+.timeline-year {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: currentColor;
+}
+
+.timeline-card h3 {
+  margin: 6px 0 10px;
+}
+
+.timeline-card p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   IMAGE
+============================================================ */
+
+.timeline-image-wrap {
+  margin-bottom: 12px;
   border-radius: 12px;
-  padding: 1.2rem 1.4rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background: #f3f3f3;
+  position: relative;
+  cursor: pointer;
 }
 
-.timeline-content h5 {
-  font-weight: 600;
+.timeline-image-wrap img {
+  width: 100%;
+  display: block;
 }
 
-/* ===============================
+.tap-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* ============================================================
+   COLOR TONES
+============================================================ */
+
+.tone-2013 { color: #7a0f1a; }
+.tone-2016 { color: #9e1c2a; }
+.tone-2019 { color: #b21e2b; }
+.tone-2022 { color: #c52b3a; }
+.tone-2024 { color: #d63a47; }
+.tone-today { color: #ff3b3b; }
+
+/* ============================================================
+   TODAY
+============================================================ */
+
+.today-dot {
+  background: currentColor;
+}
+
+.timeline-item.today {
+  width: 100%;
+  text-align: center;
+}
+
+.timeline-item.today .timeline-dot {
+  left: 50%;
+  top: -12px;
+}
+
+.timeline-item.today .timeline-card {
+  max-width: 520px;
+  margin: 32px auto 0;
+}
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+
+.timeline-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 14px;
+}
+
+/* ============================================================
    MOBILE
-   =============================== */
+============================================================ */
 
 @media (max-width: 768px) {
-  .timeline {
-    padding-left: 18px;
-  }
-
-  .timeline::before {
-    left: 9px;
-  }
-
-  .timeline-year {
+  .timeline::before,
+  .timeline-line-fill {
     left: 20px;
+    transform: none;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 52px;
+    padding-right: 16px;
+    margin-bottom: 44px;
+    text-align: left;
+  }
+
+  .timeline-dot {
+    left: 20px !important;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }

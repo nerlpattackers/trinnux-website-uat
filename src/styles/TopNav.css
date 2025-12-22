@@ -315,3 +315,34 @@ body {
     display: none;
   }
 }
+/* =====================================
+   DROPDOWN ANIMATION (FADE + SLIDE)
+   ===================================== */
+
+.topnav-dropdown-menu {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+
+  transition:
+    opacity 180ms cubic-bezier(.4,0,.2,1),
+    transform 180ms cubic-bezier(.4,0,.2,1);
+}
+
+/* When dropdown is open */
+.topnav-dropdown.open .topnav-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.topnav-dropdown.open .topnav-dropdown-menu {
+  transition-delay: 40ms;
+}
+.topnav-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}

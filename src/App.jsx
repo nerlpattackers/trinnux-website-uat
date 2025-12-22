@@ -7,14 +7,14 @@ import AOS from "aos";
 // Loader
 import SiteLoader from "./components/SiteLoader";
 
-// layout
+// Under Construction
+import UnderConstruction from "./pages/UnderConstruction";
+
+// Layout
 import TopNavbar from "./components/TopNavBar";
 import Footer from "./components/Footer";
 
-// For maintenance
-// import Maintenance from "./pages/Maintenance";
-
-// main pages
+// Main pages
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import About from "./pages/About";
@@ -22,7 +22,10 @@ import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import Gallery from "./pages/Gallery";
 
-// service pages (created earlier)
+// About pages
+import Timeline from "./pages/about/Timeline";
+
+// Service pages
 import ManagedServices from "./pages/services/ManagedServices";
 import StaffAugmentation from "./pages/services/StaffAugmentation";
 import SoftwareDevelopment from "./pages/services/SoftwareDevelopment";
@@ -37,15 +40,22 @@ import Security from "./pages/services/Security";
 import Monitoring from "./pages/services/Monitoring";
 import Streaming from "./pages/services/Streaming";
 
-import "./styles/transitions.css"; // optional: custom page transition CSS
+import "./styles/transitions.css";
 
 export default function App() {
   const location = useLocation();
 
-  // single ref reused for transitions — react-transition-group prefers a nodeRef
-  const nodeRef = useRef(null);
+  /* ✅ One ref per route (required for react-transition-group) */
+  const nodeRefs = useRef({});
 
-  // initialize AOS on mount
+  const getNodeRef = (key) => {
+    if (!nodeRefs.current[key]) {
+      nodeRefs.current[key] = React.createRef();
+    }
+    return nodeRefs.current[key];
+  };
+
+  /* Init AOS */
   useEffect(() => {
     AOS.init({
       duration: 650,
@@ -55,40 +65,44 @@ export default function App() {
     });
   }, []);
 
-  // scroll to top + refresh AOS on route change
+  /* Scroll to top + refresh AOS on route change */
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // small delay lets the new DOM render before refresh
     const t = setTimeout(() => {
       AOS.refresh();
-      if (typeof AOS.refreshHard === "function") AOS.refreshHard();
-    }, 70);
+      if (typeof AOS.refreshHard === "function") {
+        AOS.refreshHard();
+      }
+    }, 80);
 
     return () => clearTimeout(t);
-  }, [location]);
+  }, [location.pathname]);
+
+  const nodeRef = getNodeRef(location.pathname);
 
   return (
     <div className="d-flex flex-column min-vh-100 bg-white">
-      {/* GLOBAL SITE LOADER */}
+      {/* Global loader */}
       <SiteLoader />
+
+      {/* Top navigation */}
       <TopNavbar />
 
       <main className="flex-grow-1 position-relative">
         <TransitionGroup component={null}>
           <CSSTransition
             key={location.pathname}
+            nodeRef={nodeRef}
             classNames="page"
             timeout={350}
-            nodeRef={nodeRef}
             unmountOnExit
           >
             <div ref={nodeRef} className="page-wrapper">
               <Routes location={location}>
-                {/* Maintenance */}
-                {/* <Route path="/maintenance" element={<Maintenance />} /> */}
-
-                {/* Primary pages */}
+                {/* =====================
+                    PRIMARY PAGES
+                ===================== */}
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/about" element={<About />} />
@@ -96,13 +110,45 @@ export default function App() {
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/gallery" element={<Gallery />} />
 
-                {/* General service pages */}
+                {/* =====================
+                    ABOUT SUBPAGES
+                ===================== */}
+                <Route path="/about/journey" element={<Timeline />} />
+
+                <Route
+                  path="/about/values"
+                  element={
+                    <UnderConstruction
+                      title="Our Values"
+                      subtitle="Our core principles are being refined."
+                    />
+                  }
+                />
+
+                <Route
+                  path="/about/team"
+                  element={
+                    <UnderConstruction
+                      title="Leadership & Team"
+                      subtitle="Meet the people behind Trinnux — coming soon."
+                    />
+                  }
+                />
+
+                {/* =====================
+                    SERVICE PAGES
+                ===================== */}
                 <Route path="/services/managed" element={<ManagedServices />} />
                 <Route path="/services/staff" element={<StaffAugmentation />} />
-                <Route path="/services/software" element={<SoftwareDevelopment />} />
-                <Route path="/services/cloud" element={<CloudInfrastructureManagement />} />
+                <Route
+                  path="/services/software"
+                  element={<SoftwareDevelopment />}
+                />
+                <Route
+                  path="/services/cloud"
+                  element={<CloudInfrastructureManagement />}
+                />
 
-                {/* Technical service pages */}
                 <Route path="/services/networking" element={<Networking />} />
                 <Route path="/services/vpn" element={<VPN />} />
                 <Route path="/services/identity" element={<Identity />} />
@@ -112,7 +158,9 @@ export default function App() {
                 <Route path="/services/monitoring" element={<Monitoring />} />
                 <Route path="/services/streaming" element={<Streaming />} />
 
-                {/* fallback */}
+                {/* =====================
+                    FALLBACK
+                ===================== */}
                 <Route path="*" element={<Home />} />
               </Routes>
             </div>
@@ -120,6 +168,7 @@ export default function App() {
         </TransitionGroup>
       </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );
