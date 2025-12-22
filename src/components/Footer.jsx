@@ -16,10 +16,10 @@ export default function Footer() {
             className="footer-logo-icon"
           />
 
-          <div className="footer-logo-text">
+          {/* <div className="footer-logo-text">
             <span className="footer-logo-name">3NNUX</span>
             <span className="footer-logo-sub">Technologies Corp.</span>
-          </div>
+          </div> */}
         </div>
 
         {/* Navigation */}

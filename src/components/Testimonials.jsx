@@ -1,4 +1,3 @@
-// src/components/Testimonials.jsx
 import React, { useEffect, useState } from "react";
 import "../styles/testimonials.css";
 
@@ -47,36 +46,49 @@ export default function Testimonials() {
     <section className="testimonials-v3 py-5 reveal">
       <div className="container">
 
-        <div data-aos="fade-up">
-          <h3 className="section-title mb-4">What our clients say</h3>
-        </div>
+        <h3 className="section-title mb-4" data-aos="fade-up">
+          What our clients say
+        </h3>
 
-        <div className="v3-slider-wrapper" data-aos="fade-up" data-aos-delay="120">
-          
+        {/* VIEWPORT (important) */}
+        <div
+          className="v3-slider-wrapper"
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
+          {/* MOVING STRIP */}
           <div
             className="v3-slider"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {testimonials.map((t, i) => (
               <div key={i} className="v3-slide">
-
-                <div className="msg-wrapper d-flex align-items-start gap-3">
+                <div className="msg-wrapper d-flex gap-3">
 
                   {/* Avatar */}
                   {t.img ? (
-                    <img src={t.img} alt={t.name} className="msg-avatar" />
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="msg-avatar"
+                    />
                   ) : (
-                    <div className="msg-avatar-fallback">{t.letter}</div>
+                    <div className="msg-avatar-fallback">
+                      {t.letter}
+                    </div>
                   )}
 
-                  {/* Bubble */}
+                  {/* Message Bubble */}
                   <div className="msg-bubble">
-                    
                     {t.logo && (
-                      <img src={t.logo} className="msg-company mb-2" alt="Company Logo" />
+                      <img
+                        src={t.logo}
+                        alt="Company Logo"
+                        className="msg-company"
+                      />
                     )}
 
-                    <p className="msg-text mb-2">“{t.text}”</p>
+                    <p className="msg-text">“{t.text}”</p>
 
                     <div className="msg-meta">
                       <div className="fw-bold">{t.name}</div>
@@ -86,7 +98,9 @@ export default function Testimonials() {
                         {[...Array(5)].map((_, star) => (
                           <span
                             key={star}
-                            className={`star ${star < t.rating ? "filled" : ""}`}
+                            className={`star ${
+                              star < t.rating ? "filled" : ""
+                            }`}
                           >
                             ★
                           </span>
@@ -96,22 +110,20 @@ export default function Testimonials() {
                   </div>
 
                 </div>
-
               </div>
             ))}
           </div>
 
-          {/* Pagination Dots */}
+          {/* Pagination */}
           <div className="v3-dots">
             {testimonials.map((_, i) => (
               <span
                 key={i}
                 className={`dot ${i === index ? "active" : ""}`}
                 onClick={() => setIndex(i)}
-              ></span>
+              />
             ))}
           </div>
-
         </div>
 
       </div>

@@ -37,14 +37,6 @@ const images = [
     featured: true,
   },
   {
-    webp: "/gallery/party.webp",
-    jpg: "/gallery/party.jpg",
-    alt: "Team Celebration",
-    caption: "Celebrating milestones and strengthening teamwork at Trinnux",
-    category: "Team & Culture",
-    featured: true,
-  },
-  {
     webp: "/gallery/3nnux-christmas-party.webp",
     jpg: "/gallery/3nnux-christmas-party.jpg",
     alt: "Christmas Celebration",
