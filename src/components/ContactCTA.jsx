@@ -216,7 +216,6 @@ export default function ContactCTA() {
               </form>
 
               <div className="cta-v3-channels mt-4">
-                <div><Mail size={18} /> support@trinnux.com</div>
                 <div><Phone size={18} /> +63 912 345 6789</div>
               </div>
 

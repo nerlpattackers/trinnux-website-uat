@@ -1,0 +1,297 @@
+/* ===============================
+   IPS / IDS PRODUCT PAGE
+================================ */
+
+.ips-product-page {
+  background: #ffffff;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.ips-hero {
+  padding: 6rem 0;
+  background: linear-gradient(
+    135deg,
+    #4b0f1b 0%,
+    #6b1222 45%,
+    #8b1c2d 100%
+  );
+  color: #ffffff;
+}
+
+.ips-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.ips-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fecaca;
+}
+
+.ips-hero-text h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.ips-hero-text p {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #fcdcdc;
+  max-width: 560px;
+}
+
+.ips-hero-actions {
+  margin-top: 2.25rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Visual */
+.ips-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.ips-hero-mock {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+  background: url("/products/pfsense1.png") center / contain no-repeat;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,0.35));
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+
+.ips-section {
+  padding: 5rem 0;
+}
+
+.ips-section.light {
+  background: #f8fafc;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #111827;
+}
+
+/* ===============================
+   FEATURES
+================================ */
+
+.ips-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.ips-feature svg {
+  width: 24px;
+  height: 24px;
+  color: #dc2626;
+}
+
+.ips-feature h3 {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ips-feature p {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* ===============================
+   DEPLOYMENT
+================================ */
+
+.ips-deploy {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.ips-deploy-item svg {
+  width: 28px;
+  height: 28px;
+  color: #dc2626;
+}
+
+.ips-deploy-item h3 {
+  margin-top: 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ===============================
+   CTA
+================================ */
+
+.ips-cta {
+  padding: 5rem 0;
+  background: linear-gradient(
+    135deg,
+    #4b0f1b 0%,
+    #6b1222 45%,
+    #8b1c2d 100%
+  );
+  color: #ffffff;
+  text-align: center;
+}
+
+.ips-cta h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.ips-cta p {
+  margin-top: 0.75rem;
+  color: #fcdcdc;
+}
+
+.ips-cta .btn {
+  margin-top: 2rem;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 992px) {
+  .ips-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ips-hero-actions {
+    justify-content: center;
+  }
+
+  .ips-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .ips-hero {
+    padding: 4.5rem 0;
+  }
+
+  .ips-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .ips-features {
+    grid-template-columns: 1fr;
+  }
+
+  .ips-deploy {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===============================
+   IDS / IPS COMPARISON TABLE
+================================ */
+
+.ips-table-wrap {
+  overflow-x: auto;
+}
+
+.ips-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ips-table th,
+.ips-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.ips-table thead {
+  background: #6b1222;
+  color: #ffffff;
+}
+
+.ips-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.ips-table td {
+  color: #374151;
+}
+/* ===============================
+   DEPLOYMENT FLOW
+================================ */
+
+.section-intro {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+  color: #4b5563;
+}
+
+.ips-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.ips-flow-step {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.flow-step {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #6b1222;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 28px;
+  margin-bottom: 0.75rem;
+}
+
+.flow-arrow {
+  color: #9ca3af;
+  width: 22px;
+  height: 22px;
+  justify-self: center;
+}
+
+@media (max-width: 992px) {
+  .ips-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-arrow {
+    display: none;
+  }
+}

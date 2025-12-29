@@ -25,6 +25,9 @@ import Gallery from "./pages/Gallery";
 // About pages
 import Timeline from "./pages/about/Timeline";
 
+/* Product Pages */
+import IpsIdsProduct from "./pages/products/IpsIdsProduct";
+
 // Service pages
 import ManagedServices from "./pages/services/ManagedServices";
 import StaffAugmentation from "./pages/services/StaffAugmentation";
@@ -136,6 +139,9 @@ export default function App() {
                     />
                   }
                 />
+
+                {/* Products */}
+                <Route path="/products/ips-ids" element={<IpsIdsProduct />} />
 
                 {/* =====================
                     SERVICE PAGES

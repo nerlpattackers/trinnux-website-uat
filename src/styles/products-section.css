@@ -1,0 +1,163 @@
+/* ===============================
+   PRODUCTS SECTION – COMPACT
+================================ */
+
+.products-section.compact {
+  padding: 3.5rem 0;
+  background: #ffffff;
+}
+
+/* ===============================
+   PRODUCT PANEL
+================================ */
+
+.product-panel {
+  background: linear-gradient(
+    135deg,
+    #4b0f1b 0%,
+    #6b1222 45%,
+    #8b1c2d 100%
+  );
+  border-radius: 14px;
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+
+/* ===============================
+   TEXT
+================================ */
+
+.product-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fecaca;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.product-panel-text h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* ===============================
+   FEATURES
+================================ */
+
+.product-panel-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.product-panel-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  color: #fff5f5;
+}
+
+.product-panel-features svg {
+  width: 16px;
+  height: 16px;
+  color: #fecaca;
+  flex-shrink: 0;
+}
+
+/* ===============================
+   ACTIONS
+================================ */
+
+.product-panel-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* ===============================
+   VISUAL
+================================ */
+
+.product-panel-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.product-mock {
+  width: 100%;
+
+  /* Auto-scale height correctly */
+  aspect-ratio: 16 / 9;
+  min-height: 160px;
+
+  background: url("/products/pfsense.png") center / contain no-repeat;
+
+  filter: drop-shadow(0 14px 24px rgba(0,0,0,0.28));
+
+  transition:
+    transform 280ms cubic-bezier(.4,0,.2,1),
+    filter 280ms cubic-bezier(.4,0,.2,1);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 992px) {
+  .product-panel {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .product-panel-visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-section.compact {
+    padding: 2.5rem 0;
+  }
+
+  .product-panel {
+    padding: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .product-panel-text h3 {
+    font-size: 1.4rem;
+  }
+
+  .product-panel-actions {
+    flex-direction: column;
+  }
+}
+
+/* ===============================
+   HOVER (DESKTOP ONLY)
+================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  .product-panel:hover {
+    box-shadow: 0 26px 52px rgba(0,0,0,0.22),
+          0 0 24px rgba(220,38,38,0.18);
+
+  }
+
+  .product-panel:hover .product-mock {
+    transform: translateY(-4px) scale(1.015);
+    filter:
+      drop-shadow(0 22px 38px rgba(0,0,0,0.35))
+      drop-shadow(0 0 18px rgba(220, 38, 38, 0.25));
+  }
+}

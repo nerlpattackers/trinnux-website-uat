@@ -346,3 +346,37 @@ body {
   display: inline-block;
   transition: transform 180ms ease;
 }
+/* =========================
+   PRODUCT BADGES (DROPDOWN)
+========================= */
+
+.product-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-icon {
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+}
+
+.product-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0.2rem 1.9rem;
+}
+
+.product-badges .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  font-weight: 500;
+}

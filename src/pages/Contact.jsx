@@ -138,7 +138,6 @@ export default function Contact() {
           </button>
 
           <div className="quote-footer">
-            <span>sales@trinnux.com</span>
             <span>Response within one business day</span>
           </div>
         </form>

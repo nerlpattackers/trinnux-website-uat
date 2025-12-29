@@ -1,26 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { ShieldCheck, Lock, Activity } from "lucide-react";
 import "../styles/TopNav.css";
 
 export default function TopNavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const servicesRef = useRef(null);
+  const productsRef = useRef(null);
   const aboutRef = useRef(null);
 
   /* Active route checks */
   const isServicesActive = location.pathname.startsWith("/services");
+  const isProductsActive = location.pathname.startsWith("/products");
   const isAboutActive = location.pathname.startsWith("/about");
 
   /* Close mobile menu & dropdowns on route change */
   useEffect(() => {
     setMenuOpen(false);
     setServicesOpen(false);
+    setProductsOpen(false);
     setAboutOpen(false);
   }, [location.pathname]);
 
@@ -29,6 +34,9 @@ export default function TopNavBar() {
     const handler = (e) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target)) {
         setServicesOpen(false);
+      }
+      if (productsRef.current && !productsRef.current.contains(e.target)) {
+        setProductsOpen(false);
       }
       if (aboutRef.current && !aboutRef.current.contains(e.target)) {
         setAboutOpen(false);
@@ -44,10 +52,8 @@ export default function TopNavBar() {
     e.preventDefault();
 
     if (location.pathname === "/") {
-      // Already on Home → scroll up
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Navigate home, then scroll
       navigate("/");
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -60,7 +66,7 @@ export default function TopNavBar() {
       <div className="container topnav-inner">
 
         {/* =========================
-            LOGO (Back to Top)
+            LOGO
         ========================= */}
         <a
           href="/"
@@ -94,7 +100,7 @@ export default function TopNavBar() {
         ========================= */}
         <nav className={`topnav-menu ${menuOpen ? "open" : ""}`}>
 
-          {/* Home (also scrolls to top) */}
+          {/* Home */}
           <NavLink
             to="/"
             className="topnav-link"
@@ -120,6 +126,7 @@ export default function TopNavBar() {
               }`}
               onClick={() => {
                 setServicesOpen((o) => !o);
+                setProductsOpen(false);
                 setAboutOpen(false);
               }}
             >
@@ -138,6 +145,50 @@ export default function TopNavBar() {
               <NavLink to="/services" className="all-services">
                 View all services →
               </NavLink>
+            </div>
+          </div>
+
+          {/* =========================
+              PRODUCTS DROPDOWN (WITH BADGES)
+          ========================= */}
+          <div
+            className={`topnav-dropdown ${
+              productsOpen ? "open" : ""
+            } ${isProductsActive ? "active" : ""}`}
+            ref={productsRef}
+          >
+            <button
+              className={`topnav-dropdown-btn ${
+                isProductsActive ? "active" : ""
+              }`}
+              onClick={() => {
+                setProductsOpen((o) => !o);
+                setServicesOpen(false);
+                setAboutOpen(false);
+              }}
+            >
+              Products
+              <span className="dropdown-arrow">▾</span>
+            </button>
+
+            <div className="topnav-dropdown-menu">
+
+              <NavLink to="/products/ips-ids" className="product-link">
+                <span className="product-icon">
+                  <ShieldCheck size={16} />
+                </span>
+                IPS / IDS Platform
+              </NavLink>
+
+              <div className="product-badges">
+                <span className="badge">
+                  <Lock size={14} /> Enterprise Secure
+                </span>
+                <span className="badge">
+                  <Activity size={14} /> Real-Time Detection
+                </span>
+              </div>
+
             </div>
           </div>
 
@@ -165,6 +216,7 @@ export default function TopNavBar() {
               onClick={() => {
                 setAboutOpen((o) => !o);
                 setServicesOpen(false);
+                setProductsOpen(false);
               }}
             >
               About
