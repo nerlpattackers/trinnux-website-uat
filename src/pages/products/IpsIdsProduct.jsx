@@ -47,7 +47,7 @@ export default function IpsIdsProduct() {
                 Request Assessment
               </a>
               <a
-                href="/docs/pfsensee.pdf"
+                href="/docs/pfsensee.docx"
                 className="btn btn-outline-light"
                 target="_blank"
                 rel="noopener noreferrer"
